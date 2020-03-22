@@ -1,0 +1,26 @@
+os: linux
+language: python
+python: "3.7"
+
+# Ubuntu 18
+dist: bionic
+compiler:
+  - gcc
+
+addons:
+  apt:
+    update: true
+    packages:
+    - ninja-build
+
+install:
+# Install conan
+  - pip install conan
+# Automatic detection of your arch, compiler, etc.
+  - conan user
+
+script:
+# Build the project (a conan package)
+  - ./build.sh
+# Build the package consumer
+  - ./consumer/build.sh
