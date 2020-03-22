@@ -18,6 +18,14 @@ class BoostExampleConan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self, generator='Ninja')
+
+        if self.develop:
+            self.output.info("[develop mode], enabling warnings-as-errors")
+            cmake.definitions["CMAKE_C_FLAGS"]="-Werror"
+            cmake.definitions["CMAKE_CXX_FLAGS"]="-Werror"
+        else:
+            self.output.info("[consumer mode], not enabling warnings-as-errors explicitly")
+
         cmake.configure()
         return cmake
 
