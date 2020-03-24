@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake, tools
+from conans import ConanFile, CMake
 
 class BoostExampleConan(ConanFile):
     name = "BoostExample"
@@ -21,10 +21,10 @@ class BoostExampleConan(ConanFile):
 
         if self.develop:
             self.output.info("[develop mode], enabling warnings-as-errors")
-            cmake.definitions["CMAKE_C_FLAGS"]="-Werror"
-            cmake.definitions["CMAKE_CXX_FLAGS"]="-Werror"
+            cmake.definitions["ENABLE_WERROR"] = "ON"
         else:
-            self.output.info("[consumer mode], not enabling warnings-as-errors explicitly")
+            self.output.info("[consumer mode], not enabling warnings-as-errors")
+            cmake.definitions["ENABLE_WERROR"] = "OFF"
 
         cmake.configure()
         return cmake
