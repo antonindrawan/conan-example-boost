@@ -1,0 +1,35 @@
+from conans import ConanFile, CMake
+
+# conan export . conan-shared/0.1@demo/testing
+class Base(ConanFile):
+    options = { "werror": [True, False] }
+    default_options = {"werror": True}
+
+    def _add_cmake_definitions(self, cmake):
+        if self.develop:
+            self.output.info("[develop mode], enabling warnings-as-errors")
+            cmake.definitions["ENABLE_WERROR"] = "ON"
+
+            # Override with the werror option
+            if not self.options.werror:
+                cmake.definitions["ENABLE_WERROR"] = "OFF"
+        else:
+            self.output.info("[consumer mode], not enabling warnings-as-errors")
+            cmake.definitions["ENABLE_WERROR"] = "OFF"
+
+        return cmake
+
+    def _configure_cmake(self):
+        cmake = CMake(self, generator='Ninja')
+        cmake = self._add_cmake_definitions(cmake)
+
+        cmake.configure()
+        return cmake
+
+    def build(self):
+        cmake = self._configure_cmake()
+        cmake.build()
+
+    def package(self):
+        cmake = self._configure_cmake()
+        cmake.install()

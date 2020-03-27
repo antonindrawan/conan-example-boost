@@ -20,6 +20,8 @@ install:
   - conan user
 
 script:
+# Export shared conanfiles
+  - ./shared/build.sh
 # Build the project (a conan package)
   - ./build.sh
 # Build the package consumer
