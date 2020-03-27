@@ -18,7 +18,7 @@ conan install ${source_dir} -if ${build_dir}
     #cmake --build ${build_dir}
 
 # Package
-    conan package . --source-folder=${source_dir} --build-folder=${build_dir} --package-folder=${package_dir}
+    conan package ${source_dir} --source-folder=${source_dir} --build-folder=${build_dir} --package-folder=${package_dir}
 
 # Create a conan package  (user/channel)
     conan create ${source_dir} demo/testing

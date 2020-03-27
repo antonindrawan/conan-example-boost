@@ -1,7 +1,9 @@
 from conans import ConanFile, CMake
 
 class Consumer(ConanFile):
-    requires = "BoostExample/1.0.1@demo/testing"
+    name = "BoostExampleConsumer"
+    version = "0.1"
+    requires = "BoostExample/1.1@demo/testing"
 
     def _configure_cmake(self):
         cmake = CMake(self, generator='Ninja')

@@ -5,7 +5,7 @@ base = python_requires("conan-shared/0.1@demo/testing")
 
 class BoostExampleConan(base.Base):
     name = "BoostExample"
-    version = "1.0.1"
+    version = "1.1"
     description = "Example of Conan Package - Boost"
     license = "MIT"
     settings = "os", "compiler", "build_type", "arch"
