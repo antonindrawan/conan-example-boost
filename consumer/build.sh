@@ -12,3 +12,5 @@ readonly package_dir=${source_dir}/output/package
 
 # Build
     conan build ${source_dir} -bf ${build_dir} -sf ${source_dir}
+
+conan create ${source_dir} demo/testing
