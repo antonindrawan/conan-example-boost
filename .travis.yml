@@ -15,7 +15,7 @@ addons:
 
 install:
 # Install conan
-  - pip install conan
+  - pip install "conan>=1.23.0,<2.0"
 # Automatic detection of your arch, compiler, etc.
   - conan user
 
