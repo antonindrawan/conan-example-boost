@@ -7,11 +7,11 @@ class Base(ConanFile):
 
     def _add_cmake_definitions(self, cmake):
         if self.develop:
-            self.output.info("[develop mode], enabling warnings-as-errors")
-            cmake.definitions["ENABLE_WERROR"] = "ON"
-
-            # Override with the werror option
-            if not self.options.werror:
+            if self.options.werror:
+                self.output.info("[develop mode], enabling warnings-as-errors")
+                cmake.definitions["ENABLE_WERROR"] = "ON"
+            else:
+                self.output.info("[develop mode], explicitly disabling warnings-as-errors")
                 cmake.definitions["ENABLE_WERROR"] = "OFF"
         else:
             self.output.info("[consumer mode], not enabling warnings-as-errors")
