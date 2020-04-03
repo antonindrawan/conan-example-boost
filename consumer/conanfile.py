@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
 class Consumer(ConanFile):
     name = "BoostExampleConsumer"
     version = "0.1"
-    requires = "BoostExample/1.1@demo/testing"
+    requires = "BoostExample/1.2@demo/testing"
 
     # If a package is created (using conan create), all imported files will be packaged if keep_imports is True.
     keep_imports = True
