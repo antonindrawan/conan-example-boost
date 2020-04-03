@@ -1,5 +1,8 @@
 output
 
+# Conan build directory
+build
+
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
