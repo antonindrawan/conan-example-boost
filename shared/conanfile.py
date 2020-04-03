@@ -1,7 +1,12 @@
 from conans import ConanFile, CMake
 
-# conan export . conan-shared/0.1@demo/testing
+# conan export . demo/testing
 class Base(ConanFile):
+    name = "conan-shared"
+    version = "0.2"
+    license = "MIT"
+    generators = "cmake"
+    settings = "os", "compiler", "build_type", "arch"
     options = { "werror": [True, False] }
     default_options = {"werror": True}
 
